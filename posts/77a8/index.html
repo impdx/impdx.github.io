@@ -1,0 +1,578 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Linux 基本知识点 | impdx</title><meta name="keywords" content="linux基本知识"><meta name="author" content="impdx"><meta name="copyright" content="impdx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Linux 基本知识点 请注意，大部分知识点都可以在archwiki中找到  archwiki是linux最好用，最全的wiki之一，请学会使用&#x2F;阅读 不知如何分类 123456789101112sudo 提升到root运行权限ifconfig 查看ip 没有包无法运行 最小化安装可能不带ip add 查看ip 一般linux都自带****查看命令的参数，重要manhelp****ctrl+c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 基本知识点">
+<meta property="og:url" content="https://www.impdx.vip/posts/77a8/index.html">
+<meta property="og:site_name" content="impdx">
+<meta property="og:description" content="Linux 基本知识点 请注意，大部分知识点都可以在archwiki中找到  archwiki是linux最好用，最全的wiki之一，请学会使用&#x2F;阅读 不知如何分类 123456789101112sudo 提升到root运行权限ifconfig 查看ip 没有包无法运行 最小化安装可能不带ip add 查看ip 一般linux都自带****查看命令的参数，重要manhelp****ctrl+c">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img0.baidu.com/it/u=710751553,1798262645&fm=26&fmt=auto">
+<meta property="article:published_time" content="2021-12-05T15:11:51.000Z">
+<meta property="article:modified_time" content="2021-12-06T04:15:13.251Z">
+<meta property="article:author" content="impdx">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="arch linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img0.baidu.com/it/u=710751553,1798262645&fm=26&fmt=auto"><link rel="shortcut icon" href="/imgs/favicon.png"><link rel="canonical" href="https://www.impdx.vip/posts/77a8/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu_site_verification" content="http://data.zz.baidu.com/urls?site=www.impdx.vip&amp;token=d6Wl9dgjtu99hhYO"/><link rel="manifest" href="/manifest.json"/><link rel="apple-touch-icon" sizes="180x180" href="/imgs/pwa/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/imgs/pwa/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/imgs/pwa/16.png"/><link rel="mask-icon" href="/imgs/pwa/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?56e144199c27f8917b84914b8569062e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux 基本知识点',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-12-06 12:15:13'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/3215395824/hexo-css@v0.0.1/footer.css"><style type="text/css">.app-refresh{position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease}.app-refresh-wrap{display:flex;color:#fff;height:100%;align-items:center;justify-content:center}.app-refresh-wrap a{color:#fff;text-decoration:underline;cursor:pointer}</style><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="impdx" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/imgs/avatar.png" onerror="onerror=null;src='/imgs/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">45</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">20</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://img0.baidu.com/it/u=710751553,1798262645&amp;fm=26&amp;fmt=auto')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">impdx</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux 基本知识点</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-05T15:11:51.000Z" title="发表于 2021-12-05 23:11:51">2021-12-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-12-06T04:15:13.251Z" title="更新于 2021-12-06 12:15:13">2021-12-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AC%94%E8%AE%B0/linux/">linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux 基本知识点"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>Linux 基本知识点</h1>
+<p><em><strong>请注意，大部分知识点都可以在archwiki中找到</strong></em></p>
+<hr>
+<p><em><strong>archwiki是linux最好用，最全的wiki之一，请学会使用/阅读</strong></em></p>
+<h2 id="不知如何分类">不知如何分类</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo 提升到root运行权限</span><br><span class="line">ifconfig 查看ip 没有包无法运行 最小化安装可能不带</span><br><span class="line">ip add 查看ip 一般linux都自带</span><br><span class="line">****</span><br><span class="line">查看命令的参数，重要</span><br><span class="line">man</span><br><span class="line">help</span><br><span class="line">****</span><br><span class="line"></span><br><span class="line">ctrl+c  中断</span><br><span class="line">ctrl+z	挂起，如进入python ctrl+c 没用作用</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="系统开关机">系统开关机</h2>
+<h3 id="关机">关机</h3>
+<ul>
+<li><code>shutdown -h now </code>立刻关机（常用）</li>
+<li><code>halt </code></li>
+<li><code>poweroff</code></li>
+<li><code>shutdown -h 10</code>  10分钟后自动关机</li>
+</ul>
+<h3 id="重启">重启</h3>
+<blockquote>
+<p>一般我就用着俩</p>
+</blockquote>
+<ul>
+<li><code>reboot</code></li>
+<li><code>shutdown -r -h</code></li>
+</ul>
+<h2 id="改源">改源</h2>
+<blockquote>
+<p>镜像源：tuna（清华），中科大，163，阿里，搜狐，腾讯，华为</p>
+</blockquote>
+<p><em><strong>sync表示源在同步中</strong></em></p>
+<ul>
+<li>debian系</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/apt/sources.list</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>centos系</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo sed -e &#x27;s|^mirrorlist=|#mirrorlist=|g&#x27; \</span><br><span class="line">         -e &#x27;s|^#baseurl=http://mirror.centos.org/$contentdir|baseurl=https://mirrors.ustc.edu.cn/centos|g&#x27; \</span><br><span class="line">         -i.bak \</span><br><span class="line">         /etc/yum.repos.d/CentOS-Linux-AppStream.repo \</span><br><span class="line">         /etc/yum.repos.d/CentOS-Linux-BaseOS.repo \</span><br><span class="line">         /etc/yum.repos.d/CentOS-Linux-Extras.repo \</span><br><span class="line">         /etc/yum.repos.d/CentOS-Linux-PowerTools.repo \</span><br><span class="line">         /etc/yum.repos.d/CentOS-Linux-Plus.repo</span><br></pre></td></tr></table></figure>
+<ul>
+<li>arch 系</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/pacman.d/mirrorlist</span><br></pre></td></tr></table></figure>
+<h2 id="源更新，安装软件">源更新，安装软件</h2>
+<ul>
+<li>debian</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">apt update //更新源</span><br><span class="line">sudo apt upgrade //升级软件包</span><br><span class="line">apt list --upgradeable //列出可更新的软件包</span><br><span class="line">apt install xxx //安装软件包</span><br><span class="line">sudo apt autoremove xxx//删除软件包</span><br><span class="line">sudo apt show xxx //显示包的版本依赖等</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>arch</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman -Syyu //更新</span><br><span class="line">pacman -S xxx //安装</span><br><span class="line">paru //用法一样，AUR</span><br></pre></td></tr></table></figure>
+<h2 id="文件与目录管理">文件与目录管理</h2>
+<ul>
+<li>
+<p><code>ls</code>  列出目录及文件名</p>
+</li>
+<li>
+<p><code>cd</code> 切换目录</p>
+</li>
+<li>
+<p><code>pwd</code> 显示目前的目录</p>
+</li>
+<li>
+<p><code>mkdir</code> 创建一个新的目录</p>
+</li>
+<li>
+<p><code>rmdir</code>删除一个空的目录</p>
+</li>
+<li>
+<p><code>cp</code> 复制文件或目录</p>
+</li>
+<li>
+<p><code>touch</code> 创建一个文件</p>
+</li>
+<li>
+<p><code>rm</code> 删除文件或目录 千万别<code>sudo rm -rf /*</code></p>
+</li>
+<li>
+<p><code>mv</code> 移动文件与目录</p>
+</li>
+<li>
+<p><code>cat</code> 查看文件</p>
+</li>
+<li>
+<p><code>unzip</code>  解压zip文件等具体看man/help -v查看解压，后面直接跟压缩包直接解压</p>
+</li>
+</ul>
+<h2 id="VIM-nano">VIM &amp;&amp; nano</h2>
+<ul>
+<li>
+<p>Vim 是一个功能非常强大，且具有很强扩展性的编辑器。你只要知道他很<code>牛</code>就对了</p>
+</li>
+<li>
+<p>中文文档https://yianwillis.github.io/vimcdoc/doc/help.html</p>
+</li>
+<li>
+<p>退出 <code>:q</code></p>
+</li>
+<li>
+<p>保存 <code>：w</code></p>
+</li>
+<li>
+<p>保存退出<code>：wq</code></p>
+</li>
+<li>
+<p>强制执行<code>：！</code></p>
+</li>
+<li>
+<p>强制保存退出<code>：wq!</code></p>
+</li>
+<li>
+<p>插入文本</p>
+<ul>
+<li><code>i</code>当前位置插入</li>
+<li><code>o</code>下一行位置插入</li>
+<li><code>O</code>上一行位置插入</li>
+<li><code>I</code> 光标所在行的最前面插入</li>
+<li><code>a</code>光标后插入</li>
+<li><code>A</code>行尾插入</li>
+</ul>
+</li>
+<li>
+<p><code>u</code>撤销</p>
+</li>
+<li>
+<p><code>ctrl+r</code> 撤销上一次撤销的行动</p>
+</li>
+<li>
+<p>复制粘贴 y和p,有y10j这种用法，很棒</p>
+</li>
+</ul>
+<blockquote>
+<p>有兴趣可以看看https://www.runoob.com/linux/linux-vim.html</p>
+</blockquote>
+<hr>
+<ul>
+<li>nano更偏向于初学者</li>
+<li>^代表ctrl</li>
+<li>M代表alt</li>
+<li>看help和下面那些基本操作</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+G，显示帮助文本</span><br><span class="line"></span><br><span class="line">Ctrl+O，保存当前文件</span><br><span class="line"></span><br><span class="line">Ctrl+R，读取其他文件并插入光标位置</span><br><span class="line"></span><br><span class="line">Ctrl+Y，跳至上一屏幕</span><br><span class="line"></span><br><span class="line">Ctrl+K，剪切当前一行</span><br><span class="line"></span><br><span class="line">Ctrl+C，显示光标位置</span><br><span class="line"></span><br><span class="line">Ctrl+X，退出编辑文本</span><br><span class="line"></span><br><span class="line">Ctrl+J，对其当前段落（以空格为分隔符）</span><br><span class="line"></span><br><span class="line">Ctrl+W，搜索文本位置</span><br><span class="line"></span><br><span class="line">Ctrl+V，跳至下一屏幕</span><br><span class="line"></span><br><span class="line">Ctrl+U，粘贴文本至光标处</span><br><span class="line"></span><br><span class="line">Ctrl+T，运行拼写检查</span><br><span class="line"></span><br><span class="line">Ctrl+_，跳转到某一行</span><br><span class="line"></span><br><span class="line">ALT+U，撤销</span><br><span class="line"></span><br><span class="line">ALT+E，重做</span><br><span class="line"></span><br><span class="line">ALT+Y, 语法高亮</span><br><span class="line"></span><br><span class="line">ALT+#，显示行号</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1>常用检测网络是否通顺</h1>
+<ul>
+<li>
+<p><code>ping</code> 默认ICMP</p>
+</li>
+<li>
+<p><code>TCPping</code> 走tcp ping</p>
+</li>
+<li>
+<p><code>curl</code> 获取web服务器文件，直接在终端显示，比如curl <code>www.baidu.com</code></p>
+</li>
+</ul>
+<h1>linux 权限</h1>
+<p>（稍微带一下）<br>
+有兴趣可以去Google</p>
+<ul>
+<li><code>chmod +x xxx </code>给予运行权限</li>
+<li><code>chmod 777 xxx </code>一般不这么写，给予任何人的所有权限，读写执行</li>
+</ul>
+<p><img src="https://www.runoob.com/wp-content/uploads/2014/06/file-llls22.jpg" alt="如何看权限"><br>
+<img src="https://www.runoob.com/wp-content/uploads/2014/08/file-permissions-rwx.jpg" alt="权限解读1"></p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2014/08/rwx-standard-unix-permission-bits.png" alt="chmod_ugo"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">u 	user 	文件所有者</span><br><span class="line">g 	group 	文件所有者所在组</span><br><span class="line">o 	others 	所有其他用户</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">左对齐</th>
+<th style="text-align:center">右对齐</th>
+<th style="text-align:center">居中对齐</th>
+<th style="text-align:center">居中对齐</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">读 + 写 + 执行</td>
+<td style="text-align:center">rwx</td>
+<td style="text-align:center">111</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">读 + 写</td>
+<td style="text-align:center">rw-</td>
+<td style="text-align:center">110</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">读 + 执行</td>
+<td style="text-align:center">r-x</td>
+<td style="text-align:center">101</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">只读</td>
+<td style="text-align:center">r–</td>
+<td style="text-align:center">100</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">写 + 执行</td>
+<td style="text-align:center">-wx</td>
+<td style="text-align:center">011</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">只写</td>
+<td style="text-align:center">-w-</td>
+<td style="text-align:center">010</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">只执行</td>
+<td style="text-align:center">–x</td>
+<td style="text-align:center">001</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">无</td>
+<td style="text-align:center">—</td>
+<td style="text-align:center">000</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>umask</code> 可以了解一下</li>
+</ul>
+<h2 id="Git基本使用">Git基本使用</h2>
+<ul>
+<li><code>git init</code> 	git 初始化</li>
+<li><code>git clone</code> 	//克隆项目到本地</li>
+<li><code>git add .</code> 			//添加所有项目到目前分支</li>
+<li><code>git commit -m &quot;更新说明&quot;</code> //把内容说明添加到本地仓库</li>
+<li><code>git push</code> //将本地仓库提交上去</li>
+<li><code>git pull</code> //将远程仓库同步到本地仓库</li>
+<li><code>git diff </code> //比较暂存区和本地文件区别</li>
+<li><code>git config </code> // git配置，具体看参数</li>
+<li><code>git log</code> // 查看历史提交记录</li>
+<li><code>git status </code> // 查看当前状态</li>
+<li><code>git branch xxx</code> // 创建分支</li>
+<li>…具体请参考github/git文档 （可以适当了解SVN，gitlab，版本控制，分支等）</li>
+</ul>
+<h1>linux 跑python</h1>
+<ul>
+<li>
+<p><code>python</code> 默认使用python2</p>
+</li>
+<li>
+<p><code>python3</code>	默认使用python3</p>
+</li>
+<li>
+<p><code>pip3</code> //建议使用镜像源，tuna有源，可用-i参数，也可以修改全局</p>
+</li>
+</ul>
+<h1>（非必须）如使用linux为主系统可看</h1>
+<h2 id="debian（kali）-安装中文输入法">debian（kali） 安装中文输入法</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt fcitx5</span><br><span class="line">sudo apt install fcitx-googlepinyin</span><br><span class="line">apt update -y &amp;&amp; apt install xfonts-intl-chinese ttf-wqy-microhei ttf-wqy-zenhei</span><br><span class="line">sudo dpkg-reconfigure locales</span><br><span class="line"># 进入图形界面，选中en_US.UTF-8 UTF-8和zh_CN.UTF-8 UTF-8（空格是选择，tab是切换，*是选中）</span><br><span class="line">//选择语言，建议首选en_us.utf8,就是英文，其次中文，因为英文对某些软件支持较好。</span><br><span class="line">apt clean &amp;&amp; apt update -y</span><br><span class="line"></span><br><span class="line">ctrl+space切换输入法 //可以通过设置更改</span><br></pre></td></tr></table></figure>
+<h2 id="gcc">gcc</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gcc -o 1.c 1</span><br><span class="line"></span><br><span class="line">./1</span><br><span class="line">//g++ 类似，可参考参数开启O2优化</span><br></pre></td></tr></table></figure>
+<h2 id="gdb（暂时无）">gdb（暂时无）</h2>
+<h2 id="Linux-更换-编译内核">Linux 更换/编译内核</h2>
+<p>编译内核请参考另一篇文章：<a href="https://www.impdx.vip/posts/1017/">https://www.impdx.vip/posts/1017/</a> 都是基于debian，差别不是很大</p>
+<h2 id="安装QQ等国内软件可参考archwiki">安装QQ等国内软件可参考archwiki</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://wiki.archlinux.org/title/Tencent_QQ_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)</span><br><span class="line">如果没找到合适的就去github搜索，很多基于webqq开发的包。</span><br></pre></td></tr></table></figure>
+<h2 id="linux桌面">linux桌面</h2>
+<ul>
+<li>
+<p>gnome</p>
+</li>
+<li>
+<p>kde</p>
+</li>
+<li>
+<p>xfce</p>
+</li>
+<li>
+<p>lxqt</p>
+</li>
+<li>
+<p>…等</p>
+</li>
+<li>
+<p>机器配置高首选kde，花里胡哨美化效果好</p>
+</li>
+<li>
+<p>其次gnome上手即可用，</p>
+</li>
+<li>
+<p>机器配置差建议xfce，lxqt等</p>
+</li>
+</ul>
+<hr>
+<p>后期看情况更新本文</p>
+<hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined" rel="external nofollow noreferrer">impdx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.impdx.vip/posts/77a8/">https://www.impdx.vip/posts/77a8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.impdx.vip" target="_blank">impdx</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/linux/">linux</a><a class="post-meta__tags" href="/tags/arch-linux/">arch linux</a></div><div class="post_share"><div class="social-share" data-image="https://img0.baidu.com/it/u=710751553,1798262645&amp;fm=26&amp;fmt=auto" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/imgs/wechat.png" target="_blank"><img class="post-qr-code-img" src="/imgs/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/imgs/alipay.png" target="_blank"><img class="post-qr-code-img" src="/imgs/alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/2074/"><img class="next-cover" src="https://img0.baidu.com/it/u=710751553,1798262645&amp;fm=26&amp;fmt=auto" onerror="onerror=null;src='/imgs/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">arch-坚果云/白屏/闪退</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/2074/" title="arch-坚果云/白屏/闪退"><img class="cover" src="https://img0.baidu.com/it/u=710751553,1798262645&fm=26&fmt=auto" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-15</div><div class="title">arch-坚果云/白屏/闪退</div></div></a></div><div><a href="/posts/1017/" title="ax200与linux debian deepin"><img class="cover" src="https://pic2.latewind.cn/2020/02/11/6c2be4a57d6fe.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-11</div><div class="title">ax200与linux debian deepin</div></div></a></div><div><a href="/posts/4333/" title="deepin亮度问题"><img class="cover" src="https://pic2.latewind.cn/2020/02/27/fa97b0013770b.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-11</div><div class="title">deepin亮度问题</div></div></a></div><div><a href="/posts/8a03/" title="magicbook 与debian的故事"><img class="cover" src="https://pic2.latewind.cn/2020/02/26/3685029b358bd.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-11</div><div class="title">magicbook 与debian的故事</div></div></a></div><div><a href="/posts/6c0/" title="搜狗输入法 debian 无法显示中文 解决方案（依赖问题）"><img class="cover" src="https://pic2.latewind.cn/2020/02/12/6b1bb80243b21.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-12</div><div class="title">搜狗输入法 debian 无法显示中文 解决方案（依赖问题）</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Linux 基本知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E7%9F%A5%E5%A6%82%E4%BD%95%E5%88%86%E7%B1%BB"><span class="toc-text">不知如何分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%85%B3%E6%9C%BA"><span class="toc-text">系统开关机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E6%9C%BA"><span class="toc-text">关机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%90%AF"><span class="toc-text">重启</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B9%E6%BA%90"><span class="toc-text">改源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%90%E6%9B%B4%E6%96%B0%EF%BC%8C%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"><span class="toc-text">源更新，安装软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86"><span class="toc-text">文件与目录管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VIM-nano"><span class="toc-text">VIM &amp;&amp; nano</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">常用检测网络是否通顺</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">linux 权限</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-text">Git基本使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">linux 跑python</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">（非必须）如使用linux为主系统可看</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#debian%EF%BC%88kali%EF%BC%89-%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95"><span class="toc-text">debian（kali） 安装中文输入法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gcc"><span class="toc-text">gcc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gdb%EF%BC%88%E6%9A%82%E6%97%B6%E6%97%A0%EF%BC%89"><span class="toc-text">gdb（暂时无）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-%E6%9B%B4%E6%8D%A2-%E7%BC%96%E8%AF%91%E5%86%85%E6%A0%B8"><span class="toc-text">Linux 更换&#x2F;编译内核</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85QQ%E7%AD%89%E5%9B%BD%E5%86%85%E8%BD%AF%E4%BB%B6%E5%8F%AF%E5%8F%82%E8%80%83archwiki"><span class="toc-text">安装QQ等国内软件可参考archwiki</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linux%E6%A1%8C%E9%9D%A2"><span class="toc-text">linux桌面</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By impdx</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://files.alexhchu.com/2020/06/11/4720138de5936.png"align="absmiddle" width="66px" height="31px" /></a><span>提供加速服务</span>|<a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener external nofollow noreferrer"><img class="icp-icon" src="/imgs/icp.png"><span>浙ICP备20020615号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'twikoo-phi-eight.vercel.app',
+      region: ''
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'twikoo-phi-eight.vercel.app',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script src="/otherjs/music.js"></script><div class="app-refresh" id="app-refresh"> <div class="app-refresh-wrap"> <label> ✨ 网站已更新最新版本，请点击刷新 👉 </label> <a href="javascript:void(0)" rel="external nofollow noreferrer" onclick="location.reload()">点击刷新</a> </div></div><script>function showNotification(){if(GLOBAL_CONFIG.Snackbar){var t="light"===document.documentElement.getAttribute("data-theme")?GLOBAL_CONFIG.Snackbar.bgLight:GLOBAL_CONFIG.Snackbar.bgDark,e=GLOBAL_CONFIG.Snackbar.position;Snackbar.show({text:"已更新最新版本",backgroundColor:t,duration:5e5,pos:e,actionText:"点击刷新",actionTextColor:"#fff",onActionClick:function(t){location.reload()}})}else{var o=`top: 0; background: ${"light"===document.documentElement.getAttribute("data-theme")?"#49b1f5":"#1f1f1f"};`;document.getElementById("app-refresh").style.cssText=o}}"serviceWorker"in navigator&&(navigator.serviceWorker.controller&&navigator.serviceWorker.addEventListener("controllerchange",function(){showNotification()}),window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")}));</script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

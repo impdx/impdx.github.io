@@ -1,0 +1,368 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>asrd服务器配置（进阶） | impdx</title><meta name="keywords" content="asrd服务器"><meta name="author" content="impdx"><meta name="copyright" content="impdx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="linux 请看 https:&#x2F;&#x2F;github.com&#x2F;mithrand0&#x2F;reactive-drop-docker 修改配置文件 前言：asrd服务器配置文件可以大概分为AutoGavy的配置，自爆砖家的配置，南方的配置。国外的配置文件这里不涉及。 配置文件一键安装 我把所有的配置文件都整理好了，可以下载直接覆盖。  链接：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1S9VPn3cRqjm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="asrd服务器配置（进阶）">
+<meta property="og:url" content="https://www.impdx.vip/posts/fd31/index.html">
+<meta property="og:site_name" content="impdx">
+<meta property="og:description" content="linux 请看 https:&#x2F;&#x2F;github.com&#x2F;mithrand0&#x2F;reactive-drop-docker 修改配置文件 前言：asrd服务器配置文件可以大概分为AutoGavy的配置，自爆砖家的配置，南方的配置。国外的配置文件这里不涉及。 配置文件一键安装 我把所有的配置文件都整理好了，可以下载直接覆盖。  链接：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1S9VPn3cRqjm">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic2.latewind.cn/2020/02/29/f28a357d69afd.png">
+<meta property="article:published_time" content="2020-02-28T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-12-06T04:10:49.111Z">
+<meta property="article:author" content="impdx">
+<meta property="article:tag" content="ASRD">
+<meta property="article:tag" content="游戏服务器">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic2.latewind.cn/2020/02/29/f28a357d69afd.png"><link rel="shortcut icon" href="/imgs/favicon.png"><link rel="canonical" href="https://www.impdx.vip/posts/fd31/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu_site_verification" content="http://data.zz.baidu.com/urls?site=www.impdx.vip&amp;token=d6Wl9dgjtu99hhYO"/><link rel="manifest" href="/manifest.json"/><link rel="apple-touch-icon" sizes="180x180" href="/imgs/pwa/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/imgs/pwa/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/imgs/pwa/16.png"/><link rel="mask-icon" href="/imgs/pwa/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?56e144199c27f8917b84914b8569062e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'asrd服务器配置（进阶）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-12-06 12:10:49'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/3215395824/hexo-css@v0.0.1/footer.css"><style type="text/css">.app-refresh{position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease}.app-refresh-wrap{display:flex;color:#fff;height:100%;align-items:center;justify-content:center}.app-refresh-wrap a{color:#fff;text-decoration:underline;cursor:pointer}</style><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="impdx" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/imgs/avatar.png" onerror="onerror=null;src='/imgs/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">45</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">20</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pic2.latewind.cn/2020/02/29/46fdf0baca2b9.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">impdx</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">asrd服务器配置（进阶）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-02-28T16:00:00.000Z" title="发表于 2020-02-29 00:00:00">2020-02-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-12-06T04:10:49.111Z" title="更新于 2021-12-06 12:10:49">2021-12-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="asrd服务器配置（进阶）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>linux 请看 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/mithrand0/reactive-drop-docker">https://github.com/mithrand0/reactive-drop-docker</a></p>
+<h1>修改配置文件</h1>
+<p>前言：asrd服务器配置文件可以大概分为AutoGavy的配置，自爆砖家的配置，南方的配置。国外的配置文件这里不涉及。</p>
+<div class="note default flat"><h4 id="配置文件一键安装">配置文件一键安装</h4>
+<p>我把所有的配置文件都整理好了，可以下载直接覆盖。</p>
+<ul>
+<li>链接：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://pan.baidu.com/s/1S9VPn3cRqjmcw-BPIIUgKw">https://pan.baidu.com/s/1S9VPn3cRqjmcw-BPIIUgKw</a><br>
+提取码：7ce9</li>
+</ul>
+<p><strong>如果使用上述配置文件，直接覆盖就行不用修改</strong></p>
+<p>建议根据服务器调整。</p>
+<ul>
+<li>1M学生机选自爆砖家的配置：5M可选AutoGavy的配置：更高配置可选南方配置/或者自己改。</li>
+</ul>
+</div>
+<h2 id="AutoGavy的配置">AutoGavy的配置</h2>
+<p>原帖 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://steamcommunity.com/sharedfiles/filedetails/?id=1927158239">https://steamcommunity.com/sharedfiles/filedetails/?id=1927158239</a><br>
+原HZ服务配置</p>
+<ul>
+<li>服务器配置要求</li>
+</ul>
+<p>至少拥有5m宽带，1核2G。宽带越高越好，但大陆宽带普遍贵.</p>
+<ul>
+<li>cfg文件配置</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hostname &quot;[xigua] HZ-1&quot;			// 服务器名称</span><br><span class="line">asw_marine_death_cam_slowdown 0		// 关闭死亡慢镜头</span><br><span class="line">rd_override_allow_rotate_camera 1	// 允许旋转镜头</span><br><span class="line">rd_ready_mark_override 1		// 为加入的玩家设置准备</span><br></pre></td></tr></table></figure>
+<ul>
+<li>autoexec.cfg</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">sv_alternateticks 0</span><br><span class="line">sv_minrate 30000		// 标记 如只开一个服务器 100000 带宽较少默认</span><br><span class="line">sv_maxrate 400000		// 标记 如只开一个服务器 600000	带宽较少默认</span><br><span class="line">sv_minupdaterate 0</span><br><span class="line">sv_maxupdaterate 60</span><br><span class="line">sv_mincmdrate 0</span><br><span class="line">sv_maxcmdrate 60</span><br><span class="line">net_maxfilesize 1</span><br><span class="line">net_splitrate 2</span><br><span class="line">net_splitpacket_maxrate 40000	// 标记 如只开一个服务器60000</span><br><span class="line">rd_adjust_sv_maxrate 0</span><br><span class="line">sv_client_cmdrate_difference 20</span><br><span class="line">sv_client_max_interp_ratio 8</span><br><span class="line">sv_client_min_interp_ratio 0</span><br><span class="line">sv_client_predict 1</span><br><span class="line">asw_max_saves 600</span><br><span class="line">sv_autosave 0</span><br><span class="line">snd_updateaudiocache</span><br></pre></td></tr></table></figure>
+<ul>
+<li>newmapsettings.cfg</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fps_max 30	// 30 tickrate 配置高可选60fps</span><br></pre></td></tr></table></figure>
+<h2 id="自爆砖家配置">自爆砖家配置</h2>
+<p>适合1M小水管机器</p>
+<p>原帖 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://tieba.baidu.com/p/6493224666">https://tieba.baidu.com/p/6493224666</a></p>
+<ul>
+<li>autoexec.cfg</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">fps_max 500        //建议修改为60或者30</span><br><span class="line">rd_adjust_sv_maxrate 0</span><br><span class="line">sv_maxrate 13000</span><br><span class="line">sv_minrate 0</span><br><span class="line">sv_maxupdaterate 8</span><br><span class="line">sv_minupdaterate 5</span><br><span class="line">sv_maxcmdrate 60</span><br><span class="line">sv_mincmdrate 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">net_splitrate 20</span><br><span class="line">net_splitpacket_maxrate 14200</span><br><span class="line">net_maxcleartime 0.001</span><br><span class="line">sv_client_cmdrate_difference 0</span><br><span class="line">sv_client_max_interp_ratio 1</span><br><span class="line">sv_client_min_interp_ratio 1</span><br><span class="line">sv_client_predict 1</span><br><span class="line">sv_parallel_packentities 1</span><br></pre></td></tr></table></figure>
+<h2 id="南方配置。无需修改">南方配置。无需修改</h2>
+<p>适合测试及高配置服务器</p>
+<h1>使用RDA - 异形丛生RD高级插件(一般用于服务器)</h1>
+<ul>
+<li>插件安装 官网https://sites.google.com/view/rdadv</li>
+</ul>
+<p>将下载好的server.dll放置于游戏目录 Alien Swarm Reactive Drop\reactivedrop\bin 中。</p>
+<ul>
+<li>如果为服务端，只需要安装server.dll</li>
+</ul>
+<div class="note warning flat"><h4 id="rda作用">rda作用</h4>
+<p>server.dll功能简介<br>
+使用 server.dll 后的服务器\房间  主要针对rda客户端。无论是否装了rda都可进入服务器。具体看官网</p>
+</div>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">大堆性能优化（减少服务器崩溃几率）</span><br><span class="line">电梯不再被炮虫炮弹卡住</span><br><span class="line">火焰地雷不再被特殊地形挡住而失效（如darkpath玻璃地板）</span><br><span class="line">寄生虫不再卡出蛋外（原版会闪退）</span><br><span class="line">不同角度的蛋刷的寄生虫有正确角度</span><br><span class="line">虫子在一些地方爬出来时不再被卡住（如 adanaxis 战役第一关，area9800第三关）</span><br><span class="line">高速虫子不再有穿过玩家的bug，如ASBI Classic \ PRO, ASB2 等挑战，意味着可以制作更高速的虫子。</span><br><span class="line">吐绿球的怪不再因为被特殊物品\地形卡住而吐不出来</span><br><span class="line">修复虫子在一些地底能一边刷一边砍你的bug</span><br><span class="line">修复空武器bug</span><br><span class="line">创意工房的足球地图性能更好了。</span><br></pre></td></tr></table></figure>
+<h1>使用 HLSM 工具管理服务器</h1>
+<div class="note info flat"><h3 id="简介">简介</h3>
+<p>HL Server Monitor”是由Rulzy工作室推出的一款免费软件。使用此软件，可以在HL服务器出现严重错误、进程丢失、网络无响应的时候，能自动重启HL服务器，以保证你的HL服务器能持续工作。本软件为免费软件，不提供任何使用保证。</p>
+</div>
+<p><img src="https://pic2.latewind.cn/2020/02/29/b600b845a4d6b.png" alt="hlsm.png"><br>
+<img src="https://pic2.latewind.cn/2020/02/29/60c348af2232c.png" alt="hlsmtj.png"></p>
+<ul>
+<li>实现自动重启等功能。比bat完善。</li>
+<li>比较老的工具了。也可以不使用HLSM，使用rcon功能。</li>
+</ul>
+<p>安装打开后右键增加服务器。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-console -autoupdate -game reactivedrop -port 27016 +map lobby +con_logfile &quot;console.log&quot; -maxplayers 18 +exec server.cfg +hostname &quot;[CN]T3_瀹樺浘_鏇村鍦板浘www.impdx.vip鎼渁srd_&quot;</span><br></pre></td></tr></table></figure>
+<p>参考参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">下面为可用启动参数：</span><br><span class="line"></span><br><span class="line">-console //以控制台模式启动服务器。</span><br><span class="line">-autoupdate //开启自动升级</span><br><span class="line">-condebug //在cspromod目录下生成记载有开发模式的控制台日志文件console.log。</span><br><span class="line">-game &quot;left4dead2&quot; //指定服务器内容为求生之路2，即指定服务器运行的游戏，在控制台模式下此为必须的参数。</span><br><span class="line">-insecure //取消Valve的反作弊模块VAC2(Valve Anti-Cheat 2)，欲加载VAC2则取消此参数，让服务器不检测 SteamID。</span><br><span class="line">-ip 192.168.1.2 //指定服务器IP地址为192.168.1.2，此IP地址必须是服务器本机有效的内网或外网IP。（提示：假如要用HLSW软件远程管理，必须使用此参数）</span><br><span class="line">-noipx //关闭对NetWare IPX的支持，稍微减轻CPU压力，除非是在NetWare LAN上玩。</span><br><span class="line">-port 27026 //指定服务器端口为27026，空缺此参数时，则默认27015为服务器端口。（提示：假如要用HLSW软件远程管理，必须使用此参数）</span><br><span class="line">-secure //启用Valve的反作弊模块</span><br><span class="line">+exec server.cfg //执行指定配置文件</span><br><span class="line">+log on //记录日志？</span><br><span class="line">+map c1m1_hotel //指定服务器地图为de_dust2，备选地图参照你所使用的游戏的地图。</span><br><span class="line">+maxplayers 14 //指定服务器最大人数为14人，范围1~64(根据地图、服务器性能来定)。</span><br><span class="line">+sv_gametypes coop //游戏模式，例如求生之路：coop = 战役、合作，versus = 对抗。</span><br><span class="line">+sv_lan 0 //指定服务器为Internet(互联网)服务器。</span><br><span class="line">+sv_lan 1 //指定服务器为Lan(局域网)服务器。</span><br><span class="line"></span><br><span class="line">其他参数：</span><br><span class="line"></span><br><span class="line">-defaultgamedir</span><br><span class="line">-buildcubemaps</span><br><span class="line">-nocdaudio</span><br><span class="line">-nosound</span><br><span class="line">-rebuildaudio</span><br><span class="line">-demo</span><br><span class="line">-bi</span><br><span class="line">-ref</span><br><span class="line">-adapter</span><br><span class="line">-freq</span><br><span class="line">-refresh</span><br><span class="line">-refreshrate</span><br><span class="line">-autoconfig</span><br><span class="line">-pme</span><br><span class="line">-allowstalezip</span><br><span class="line">-nomaster</span><br><span class="line">-nopreload</span><br><span class="line">-nopreloadmodels</span><br><span class="line">-nopreloadsounds</span><br><span class="line">-preload</span><br><span class="line">-dxlevel</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div class="note warning flat"><h4 id="乱码问题">乱码问题</h4>
+<ul>
+<li>关于乱码问题，因为HLSM只支持ansi，但是游戏是支持UTF-8的。</li>
+<li>新建一个文本用atom/notepad++等打开，uft8输入你服务器的名字，接着转换成ANSI，复制这串乱码就可以了。</li>
+<li>已知bug：使用-ip参数时，本机游戏不能进入本机服务器。</li>
+</ul>
+</div>
+<div class="note success flat"><h4 id="欢迎大佬-小白来提问，修正文章中有错误或者不正常的部分。请在评论区留言">欢迎大佬/小白来提问，修正文章中有错误或者不正常的部分。请在评论区留言</h4>
+<ul>
+<li>2020-3-13 去除 sv_forcepreload 1 负优化选项，增加T3workshop.cfg文件。</li>
+</ul>
+</div>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined" rel="external nofollow noreferrer">impdx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.impdx.vip/posts/fd31/">https://www.impdx.vip/posts/fd31/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.impdx.vip" target="_blank">impdx</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ASRD/">ASRD</a><a class="post-meta__tags" href="/tags/%E6%B8%B8%E6%88%8F%E6%9C%8D%E5%8A%A1%E5%99%A8/">游戏服务器</a></div><div class="post_share"><div class="social-share" data-image="https://pic2.latewind.cn/2020/02/29/f28a357d69afd.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/imgs/wechat.png" target="_blank"><img class="post-qr-code-img" src="/imgs/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/imgs/alipay.png" target="_blank"><img class="post-qr-code-img" src="/imgs/alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/c6ac/"><img class="prev-cover" src="https://r.photo.store.qq.com/psb?/V13iVwZo2obvUj/*7P*Ubd2.8OqGze07k80S51H0TLtyl6Tg27l817xzJg!/r/dFQBAAAAAAAAnull/_yake_qzoneimgout.png" onerror="onerror=null;src='/imgs/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">asrd 16人补丁</div></div></a></div><div class="next-post pull-right"><a href="/posts/bb7c/"><img class="next-cover" src="https://pic2.latewind.cn/2020/02/26/3685029b358bd.png" onerror="onerror=null;src='/imgs/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">linux下制作微pe</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/9639/" title="ASRD服务器建设 (小白版)"><img class="cover" src="https://pic2.latewind.cn/2020/02/29/f28a357d69afd.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-03-05</div><div class="title">ASRD服务器建设 (小白版)</div></div></a></div><div><a href="/posts/edfd/" title="ASRD合集（包括所有第三方地图）"><img class="cover" src="https://pic2.latewind.cn/2020/02/29/f28a357d69afd.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-05-11</div><div class="title">ASRD合集（包括所有第三方地图）</div></div></a></div><div><a href="/posts/c6ac/" title="asrd 16人补丁"><img class="cover" src="https://r.photo.store.qq.com/psb?/V13iVwZo2obvUj/*7P*Ubd2.8OqGze07k80S51H0TLtyl6Tg27l817xzJg!/r/dFQBAAAAAAAAnull/_yake_qzoneimgout.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-09</div><div class="title">asrd 16人补丁</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">修改配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85"><span class="toc-text">配置文件一键安装</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AutoGavy%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-text">AutoGavy的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E7%88%86%E7%A0%96%E5%AE%B6%E9%85%8D%E7%BD%AE"><span class="toc-text">自爆砖家配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%97%E6%96%B9%E9%85%8D%E7%BD%AE%E3%80%82%E6%97%A0%E9%9C%80%E4%BF%AE%E6%94%B9"><span class="toc-text">南方配置。无需修改</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">使用RDA - 异形丛生RD高级插件(一般用于服务器)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#rda%E4%BD%9C%E7%94%A8"><span class="toc-text">rda作用</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">使用 HLSM 工具管理服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98"><span class="toc-text">乱码问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AC%A2%E8%BF%8E%E5%A4%A7%E4%BD%AC-%E5%B0%8F%E7%99%BD%E6%9D%A5%E6%8F%90%E9%97%AE%EF%BC%8C%E4%BF%AE%E6%AD%A3%E6%96%87%E7%AB%A0%E4%B8%AD%E6%9C%89%E9%94%99%E8%AF%AF%E6%88%96%E8%80%85%E4%B8%8D%E6%AD%A3%E5%B8%B8%E7%9A%84%E9%83%A8%E5%88%86%E3%80%82%E8%AF%B7%E5%9C%A8%E8%AF%84%E8%AE%BA%E5%8C%BA%E7%95%99%E8%A8%80"><span class="toc-text">欢迎大佬&#x2F;小白来提问，修正文章中有错误或者不正常的部分。请在评论区留言</span></a></li></ol></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By impdx</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://files.alexhchu.com/2020/06/11/4720138de5936.png"align="absmiddle" width="66px" height="31px" /></a><span>提供加速服务</span>|<a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener external nofollow noreferrer"><img class="icp-icon" src="/imgs/icp.png"><span>浙ICP备20020615号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'twikoo-phi-eight.vercel.app',
+      region: ''
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'twikoo-phi-eight.vercel.app',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script src="/otherjs/music.js"></script><div class="app-refresh" id="app-refresh"> <div class="app-refresh-wrap"> <label> ✨ 网站已更新最新版本，请点击刷新 👉 </label> <a href="javascript:void(0)" rel="external nofollow noreferrer" onclick="location.reload()">点击刷新</a> </div></div><script>function showNotification(){if(GLOBAL_CONFIG.Snackbar){var t="light"===document.documentElement.getAttribute("data-theme")?GLOBAL_CONFIG.Snackbar.bgLight:GLOBAL_CONFIG.Snackbar.bgDark,e=GLOBAL_CONFIG.Snackbar.position;Snackbar.show({text:"已更新最新版本",backgroundColor:t,duration:5e5,pos:e,actionText:"点击刷新",actionTextColor:"#fff",onActionClick:function(t){location.reload()}})}else{var o=`top: 0; background: ${"light"===document.documentElement.getAttribute("data-theme")?"#49b1f5":"#1f1f1f"};`;document.getElementById("app-refresh").style.cssText=o}}"serviceWorker"in navigator&&(navigator.serviceWorker.controller&&navigator.serviceWorker.addEventListener("controllerchange",function(){showNotification()}),window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")}));</script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
