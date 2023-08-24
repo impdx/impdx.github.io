@@ -1,0 +1,371 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>如何使用多家cdn优化博客(hexo 又拍云主线路) | impdx</title><meta name="author" content="impdx"><meta name="copyright" content="impdx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本文参加又拍云原创技术征文活动 本文已获得又拍云征文三等奖 起因  我的站点原本挂 coding和github的 peages 发现github访问速度不理想 coding又不稳，经常崩  在了解了cdn后，6月份备案了。开始白嫖之路 各大白嫖cdn的介绍 以下按个人使用感受排名  又拍云  实测各方面均不错 缺点是流量少，但一般也用不完（加入又拍云联盟每个月流量+15g，很棒）   百度云加速">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何使用多家cdn优化博客(hexo 又拍云主线路)">
+<meta property="og:url" content="https://www.impdx.vip/posts/e3c9/index.html">
+<meta property="og:site_name" content="impdx">
+<meta property="og:description" content="本文参加又拍云原创技术征文活动 本文已获得又拍云征文三等奖 起因  我的站点原本挂 coding和github的 peages 发现github访问速度不理想 coding又不稳，经常崩  在了解了cdn后，6月份备案了。开始白嫖之路 各大白嫖cdn的介绍 以下按个人使用感受排名  又拍云  实测各方面均不错 缺点是流量少，但一般也用不完（加入又拍云联盟每个月流量+15g，很棒）   百度云加速">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://image.impdx.vip/blog/cdn-cover.png">
+<meta property="article:published_time" content="2020-06-16T11:25:43.000Z">
+<meta property="article:modified_time" content="2023-08-24T06:56:16.755Z">
+<meta property="article:author" content="impdx">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="cdn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://image.impdx.vip/blog/cdn-cover.png"><link rel="shortcut icon" href="/imgs/avatar.png"><link rel="canonical" href="https://www.impdx.vip/posts/e3c9/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//s4.cnzz.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu_site_verification" content="http://data.zz.baidu.com/urls?site=www.impdx.vip&amp;token=d6Wl9dgjtu99hhYO"/><link rel="manifest" href="/manifest.json"/><link rel="apple-touch-icon" sizes="180x180" href="/imgs/pwa/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/imgs/pwa/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/imgs/pwa/16.png"/><link rel="mask-icon" href="/imgs/pwa/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/pluginsSrc/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/pluginsSrc/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?56e144199c27f8917b84914b8569062e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FNG73E0PE6"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FNG73E0PE6');
+</script><script async="async" data-pjax="data-pjax" src="https://s4.cnzz.com/z_stat.php?id=1280805219&amp;web_id=1280805219"></script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: '/pluginsSrc/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: '/pluginsSrc/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '如何使用多家cdn优化博客(hexo 又拍云主线路)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-24 14:56:16'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.0.0"><link rel="alternate" href="/atom.xml" title="impdx" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/imgs/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">51</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://image.impdx.vip/blog/cdn-cover.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">impdx</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">如何使用多家cdn优化博客(hexo 又拍云主线路)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-06-16T11:25:43.000Z" title="发表于 2020-06-16 19:25:43">2020-06-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-08-24T06:56:16.755Z" title="更新于 2023-08-24 14:56:16">2023-08-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AC%94%E8%AE%B0/cdn/">cdn</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="如何使用多家cdn优化博客(hexo 又拍云主线路)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.upyun.com/tech/article/551/%E6%9C%89%E5%A5%96%E5%BE%81%E6%96%87%EF%BD%9C%E5%8F%88%E6%8B%8D%E4%BA%91%E5%8E%9F%E5%88%9B%E6%8A%80%E6%9C%AF%E5%BE%81%E6%96%87%E5%A4%A7%E8%B5%9B%EF%BC%8CFILCO%E9%94%AE%E7%9B%98%E3%80%81%E5%B0%8F%E7%B1%B3%E6%89%8B%E7%8E%AF%E3%80%81%E4%BB%A3%E9%87%91%E5%88%B8%E7%AD%89%E4%BD%A0%E6%9D%A5%E6%8B%BF.html">本文参加又拍云原创技术征文活动</a></p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.upyun.com/tech/article/562/%E8%8E%B7%E5%A5%96%E5%90%8D%E5%8D%95%E5%85%AC%E5%B8%83%EF%BD%9C%E5%8F%88%E6%8B%8D%E4%BA%91%E5%8E%9F%E5%88%9B%E6%8A%80%E6%9C%AF%E5%BE%81%E6%96%87%E6%B4%BB%E5%8A%A8%E5%9C%86%E6%BB%A1%E8%90%BD%E5%B9%95.html">本文已获得又拍云征文三等奖</a></p>
+<h1>起因</h1>
+<ul>
+<li>我的站点原本挂 coding和github的 peages 发现github访问速度不理想</li>
+<li>coding又不稳，经常崩</li>
+</ul>
+<p>在了解了cdn后，6月份<strong>备案</strong>了。开始白嫖之路</p>
+<h1>各大白嫖cdn的介绍</h1>
+<h3 id="以下按个人使用感受排名">以下按个人使用感受排名</h3>
+<ul>
+<li>又拍云
+<ul>
+<li>实测各方面均不错</li>
+<li>缺点是流量少，但一般也用不完（加入又拍云联盟每个月流量+15g，很棒）</li>
+</ul>
+</li>
+<li>百度云加速
+<ul>
+<li>流量很多，每天10g</li>
+<li>缺点是回源设置不如又拍云，而且经常报5xx错误</li>
+<li>而且有概率反向加速</li>
+</ul>
+</li>
+<li>奇安信加速
+<ul>
+<li>奇安信流量一年1t，没错，按年来算。。</li>
+<li>速度，只有一个节点，，一个人被打，全部受影响。日常不稳，经常404</li>
+</ul>
+</li>
+</ul>
+<h1>目前方案</h1>
+<p>使用dnspod进行分线路解析</p>
+<ul>
+<li>默认线路：又拍云</li>
+<li>联通线路：百度云加速</li>
+<li>电信线路：奇安信</li>
+<li>境外：github</li>
+<li>小运营商：又拍云</li>
+</ul>
+<p>为何这样分配？看下问</p>
+<h1>原理图</h1>
+<p>第一次做流程图，如有可以改进的地方可以评论区留言<br>
+<img src="https://pic2.latewind.cn/2020/06/17/4df2e8f9ea0bf.png" alt="dnspod分线路解析cdn.png"></p>
+<h3 id="线路分配原因">线路分配原因</h3>
+<ul>
+<li>又拍云 国内节点最多，最稳。所以用来应对蛋疼的移动线路</li>
+<li>百度云节点其次，用来应付联通</li>
+<li>奇安信就一个节点，，，当然是电信大头</li>
+<li>境外路线直接走的github没套cdn</li>
+<li>小运营商其实不用管，默认线路是又拍云，除了以上线路其他全走又拍云。</li>
+</ul>
+<p>实测又拍云最稳，百度云经常报5xx错误，奇安信就算炸了也没多少人管。而且奇安信多访问几次直接算cc。</p>
+<h1>相应操作</h1>
+<h3 id="注意点">注意点</h3>
+<ul>
+<li><strong>建议加入又拍云联盟（免费每个月15g储存和10gcdn流量）</strong></li>
+<li>只讲关键的操作步骤</li>
+<li>域名需要备案。关于怎么备案hexo（coding&amp;github），后期高考完我会出教程</li>
+<li>各大cdn都需要<strong>实名</strong>，其中需要手持，身份证各正反面。</li>
+<li>奇安信的实名审核就可以使用，百度审核中不能使用，又拍云审核中可以使用</li>
+<li>添加cname验证cdn的时候，注意线路一定要默认才可以验证。验证完可以改线路，不影响使用。</li>
+</ul>
+<h2 id="前置dnspod操作">前置dnspod操作</h2>
+<h3 id="进入控制台">进入控制台</h3>
+<p>设置两条子域名，分别指向github和coding的地址。<br>
+<img src="https://pic2.latewind.cn/2020/06/17/7ab0bfd1b3f56.png" alt="N74PDPJA549A_7Y0X___CQX.png"></p>
+<h2 id="又拍云操作">又拍云操作</h2>
+<h3 id="1-进入又拍云控制台">1.进入又拍云控制台</h3>
+<h3 id="2-选择cdn服务，点创建">2.选择cdn服务，点创建</h3>
+<p><img src="https://pic2.latewind.cn/2020/06/17/d304dc3943d86.png" alt="O_4_7~4_Y88R_M@_`PV.png"></p>
+<p><img src="https://pic2.latewind.cn/2020/06/17/c52bb366dd77f.png" alt="S2C3~W_D__GUEL1_T.png"></p>
+<h3 id="3-进入配置，配置cname">3.进入配置，配置cname</h3>
+<ul>
+<li>注意线路一定要默认</li>
+</ul>
+<p><img src="https://pic2.latewind.cn/2020/06/17/06e72265a9cbb.png" alt="JTI6`ZO~NNDQ__QUE~RL6A0.png"><br>
+至此简单的配置已经完成了</p>
+<h2 id="又拍云优化系列">又拍云优化系列</h2>
+<h3 id="缓存控制">缓存控制</h3>
+<ul>
+<li>开启分段缓存</li>
+<li>缓存配置，我配置了缓存全站1小时。（因博客需要经常更新文章）</li>
+</ul>
+<h3 id="性能优化">性能优化</h3>
+<ul>
+<li>开启页面压缩</li>
+<li>开启重定向跟随</li>
+</ul>
+<h3 id="https">https</h3>
+<ul>
+<li>开启TLS 1.3</li>
+<li>最低 TLS 版本 选择1.0，因为兼容所以选择</li>
+<li>HTTP/2 开启</li>
+</ul>
+<h3 id="访问控制（重要）">访问控制（重要）</h3>
+<ul>
+<li>
+<p>ip访问限制</p>
+<ul>
+<li>一分钟超过300次直接禁止24小时ip访问（由于全是静态，有更合理的设置可以评论改进）</li>
+</ul>
+</li>
+<li>
+<p>cc防护 开启</p>
+<ul>
+<li>url匹配规则 /*</li>
+<li>访问频率300 次/分</li>
+<li>智能防护 无白名单</li>
+</ul>
+</li>
+<li>
+<p>waf防护 开启</p>
+</li>
+</ul>
+<p>图片处理和成本控制以及边缘规则我并没有开，因为是静态站，也不会放啥mp4.</p>
+<h2 id="百度云操作">百度云操作</h2>
+<ul>
+<li>1.添加网站（选择cname）</li>
+<li>2.验证dns，cname记录等。<strong>注意：线路要为默认</strong></li>
+<li>3.在子域名解析加入 例子：<br>
+<img src="https://pic2.latewind.cn/2020/06/17/20ea03e5eb8e3.png" alt="_OR_86__H3D0~MBP5RWV0MA.png"><br>
+至此简单配置教程结束</li>
+</ul>
+<h2 id="奇安信操作">奇安信操作</h2>
+<h3 id="注意点-2">注意点</h3>
+<ul>
+<li>奇安信验证时间特别特别长，接入网站时，有时候会白。据工作人员了解每新增一个域名需要手动去添加，因而只有工作日才可以添加。</li>
+<li>奇安信网站卫士的js/css/html缓存，千万别开。不然慢死你。</li>
+</ul>
+<p><img src="https://pic2.latewind.cn/2020/06/17/9f0364a37cf3f.png" alt="_FA9H9A80H_TOQI63@N_8RX.png"></p>
+<h3 id="进入控制台-2">进入控制台</h3>
+<ul>
+<li>就这样嗯嗯嗯，那样嗯嗯嗯，就好了</li>
+<li>绑定域名还是cname接入，上dnspod默认线路，等10分钟左右生效（ttl：600）。然后点小刷新图标刷新。</li>
+<li>接入还是老样子，域名解析www，cname解析到如：github.impdx.vip（第一步设置的github地址）。</li>
+<li>开启云防护。</li>
+<li>结束</li>
+</ul>
+<h2 id="dnspod设置各线路解析cname">dnspod设置各线路解析cname</h2>
+<p><img src="https://pic2.latewind.cn/2020/06/17/35404a185fa8c.png" alt="D@_YMR2__6AGZ5H_A2__U6H.png"></p>
+<h3 id="设置d监控">设置d监控</h3>
+<p><img src="https://pic2.latewind.cn/2020/06/17/dc49e1b5cb4bf.png" alt="_R_G6IQSJ_WSB3_HW3_9VBE.png"></p>
+<h1>至此</h1>
+<p>关键步骤均已完成</p>
+<p>我的博客即将同步至腾讯云+社区，邀请大家一同入驻：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://cloud.tencent.com/developer/support-plan?invite_code=3ltx2dbwpkcgc">https://cloud.tencent.com/developer/support-plan?invite_code=3ltx2dbwpkcgc</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://www.impdx.vip">impdx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.impdx.vip/posts/e3c9/">https://www.impdx.vip/posts/e3c9/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.impdx.vip" target="_blank">impdx</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/hexo/">hexo</a><a class="post-meta__tags" href="/tags/cdn/">cdn</a></div><div class="post_share"><div class="social-share" data-image="https://image.impdx.vip/blog/cdn-cover.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="/pluginsSrc/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="/pluginsSrc/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/ee22/"><img class="prev-cover" src="https://image.impdx.vip/blog/hexo.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">网站 更新日志</div></div></a></div><div class="next-post pull-right"><a href="/posts/354b/"><img class="next-cover" src="https://image.impdx.vip/blog/gzk.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2020高职提前招生分析（计算机类）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/d951/" title="hexo github pages 使用https"><img class="cover" src="https://image.impdx.vip/blog/hexo.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-04-12</div><div class="title">hexo github pages 使用https</div></div></a></div><div><a href="/posts/7d46/" title="关于一个小白github建blog的故事"><img class="cover" src="https://image.impdx.vip/blog/hexo.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-03-26</div><div class="title">关于一个小白github建blog的故事</div></div></a></div><div><a href="/posts/962e/" title="markdown-中点击查看原图"><img class="cover" src="https://image.impdx.vip/blog/markdown.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-07-30</div><div class="title">markdown-中点击查看原图</div></div></a></div><div><a href="/posts/11d0/" title="图床的推荐"><img class="cover" src="https://image.impdx.vip/blog/hexo.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-11</div><div class="title">图床的推荐</div></div></a></div><div><a href="/posts/ee22/" title="网站 更新日志"><img class="cover" src="https://image.impdx.vip/blog/hexo.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-22</div><div class="title">网站 更新日志</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">起因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">各大白嫖cdn的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A5%E4%B8%8B%E6%8C%89%E4%B8%AA%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%84%9F%E5%8F%97%E6%8E%92%E5%90%8D"><span class="toc-text">以下按个人使用感受排名</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">目前方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">原理图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E8%B7%AF%E5%88%86%E9%85%8D%E5%8E%9F%E5%9B%A0"><span class="toc-text">线路分配原因</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">相应操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="toc-text">注意点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%BD%AEdnspod%E6%93%8D%E4%BD%9C"><span class="toc-text">前置dnspod操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5%E6%8E%A7%E5%88%B6%E5%8F%B0"><span class="toc-text">进入控制台</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%88%E6%8B%8D%E4%BA%91%E6%93%8D%E4%BD%9C"><span class="toc-text">又拍云操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%BF%9B%E5%85%A5%E5%8F%88%E6%8B%8D%E4%BA%91%E6%8E%A7%E5%88%B6%E5%8F%B0"><span class="toc-text">1.进入又拍云控制台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%80%89%E6%8B%A9cdn%E6%9C%8D%E5%8A%A1%EF%BC%8C%E7%82%B9%E5%88%9B%E5%BB%BA"><span class="toc-text">2.选择cdn服务，点创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%BF%9B%E5%85%A5%E9%85%8D%E7%BD%AE%EF%BC%8C%E9%85%8D%E7%BD%AEcname"><span class="toc-text">3.进入配置，配置cname</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%88%E6%8B%8D%E4%BA%91%E4%BC%98%E5%8C%96%E7%B3%BB%E5%88%97"><span class="toc-text">又拍云优化系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E6%8E%A7%E5%88%B6"><span class="toc-text">缓存控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-text">性能优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#https"><span class="toc-text">https</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89"><span class="toc-text">访问控制（重要）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%99%BE%E5%BA%A6%E4%BA%91%E6%93%8D%E4%BD%9C"><span class="toc-text">百度云操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%87%E5%AE%89%E4%BF%A1%E6%93%8D%E4%BD%9C"><span class="toc-text">奇安信操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9-2"><span class="toc-text">注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5%E6%8E%A7%E5%88%B6%E5%8F%B0-2"><span class="toc-text">进入控制台</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dnspod%E8%AE%BE%E7%BD%AE%E5%90%84%E7%BA%BF%E8%B7%AF%E8%A7%A3%E6%9E%90cname"><span class="toc-text">dnspod设置各线路解析cname</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEd%E7%9B%91%E6%8E%A7"><span class="toc-text">设置d监控</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">至此</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://image.impdx.vip/blog/cdn-cover.png')"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2023 By impdx</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://image.impdx.vip/blog/upyun.png"align="absmiddle" width="66px" height="31px" /></a><span>提供加速服务</span>&nbsp;|<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33022602000538" target="_blank" rel="noopener external nofollow noreferrer"><img class="icp-icon" src="/imgs/icp.png"><span>浙公网安备 33022602000538号</span></a>&nbsp;|&nbsp;<a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener external nofollow noreferrer"><span>浙ICP备20020615号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/pluginsSrc/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="/pluginsSrc/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="/pluginsSrc/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: true,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', 'G-FNG73E0PE6', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
